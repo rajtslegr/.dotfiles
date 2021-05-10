@@ -28,16 +28,16 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   autojump
-  brew
+  docker
+  docker-compose
   git
   git-auto-fetch
   history
   ng
-  node
   npm
   nvm
+  sudo
   tmux
-  yarn
   fzf-tab
 )
 
@@ -56,7 +56,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # --------------------------- Custom aliases ----------------------------------
 # UPGRADE ALL!
-alias all-up="mas-up; brew-up; brew-cl; brew-dc; zsh-up; npm-up; nvm-cl; pip-up; cargo-up; nvim-cfg-up; clr; zsh-rr;"
+alias all-up="mas-up; brew-up; brew-cl; brew-dc; zsh-up; npm-up; pnpm-up; pip-up; cargo-up; nvim-cfg-up; nvm-cl; npm-cv; pnpm-cl; pip-cl; clr; zsh-rr;"
 
 # MacOS
 alias mac-up="sudo softwareupdate -i -a --restart"
@@ -82,10 +82,10 @@ alias nvm-cl="nvm cache clear"
 alias npm-ls="npm list -g --depth=0"
 alias npm-up="npm update -g"
 alias npm-cv="npm cache verify"
-# alias func="npm update"
 
-# yarn
-alias yarn-cl="yarn cache clean"
+# pnpm
+alias pnpm-up="pnpm add -g pnpm && pnpm update -g"
+alias pnpm-cl="pnpm store prune"
 
 # cargo
 alias cargo-up="cargo install $(cargo install --list | egrep '^[a-z0-9_-]+ v[0-9.]+:$' | cut -f1 -d' ')"
