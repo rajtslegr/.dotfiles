@@ -98,7 +98,6 @@ alias pip-up="python3 -m pip install --upgrade pip; pip3 list --outdated --forma
 alias pip-cl="pip3 cache purge"
 
 # Basic bash aliases
-alias code="code-insiders"
 alias clr="clear"
 alias cd..="cd .."
 
