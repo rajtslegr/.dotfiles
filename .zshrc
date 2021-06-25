@@ -48,7 +48,8 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 export PATH="/opt/homebrew/opt/php@7.4/bin:$PATH"
 export PATH="/opt/homebrew/opt/php@7.4/sbin:$PATH"
-export PATH="/Users/petr/.cargo/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.symfony/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
@@ -56,7 +57,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # --------------------------- Custom aliases ----------------------------------
 # UPGRADE ALL!
-alias all-up="mas-up; brew-up; brew-cl; brew-dc; zsh-up; npm-up; pnpm-up; pip-up; cargo-up; nvim-cfg-up; nvm-up; nvm-cl; npm-cv; pnpm-cl; pip-cl; code-cl; hosts-up; clr; zsh-rr;"
+alias all-up="mas-up; brew-up; brew-cl; brew-dc; zsh-up; npm-up; pnpm-up; pip-up; cargo-up; nvim-cfg-up; nvm-up; nvm-cl; npm-cv; pnpm-cl; pip-cl; code-cl; clr; zsh-rr;"
 
 # MacOS
 alias mac-up="sudo softwareupdate -i -a --restart"
@@ -97,9 +98,6 @@ alias nvim-cfg-up="git -C ~/.config/nvim pull --rebase --autostash"
 alias pip-up="python3 -m pip install --upgrade pip; pip3 list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install -U"
 alias pip-cl="pip3 cache purge"
 
-# hosts
-alias hosts-up="wget https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts -O ~/Downloads/hosts && sudo mv ~/Downloads/hosts /etc"
-
 # Basic bash aliases
 alias clr="clear"
 alias cd..="cd .."
@@ -111,7 +109,7 @@ alias work="cd ~/dev/work"
 
 # Scripts
 alias code-cl="sh ~/dev/scripts/vscode-unused-workspace-storage-cleanup.sh"
-alias slc="python3 ~/dev/scripts/calc.py"
+alias slc="cd ~; python3 ~/dev/scripts/calc.py"
 
 # Funny time! (cmatrix, hollywood, sl, aafire, toilet)
 alias weather="curl http://wttr.in"
