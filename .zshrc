@@ -48,7 +48,6 @@ source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 export PATH="/opt/homebrew/opt/php@7.4/bin:$PATH"
 export PATH="/opt/homebrew/opt/php@7.4/sbin:$PATH"
-export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.symfony/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
@@ -57,7 +56,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # --------------------------- Custom aliases ----------------------------------
 # UPGRADE ALL!
-alias all-up="mas-up; brew-up; brew-cl; brew-dc; zsh-up; npm-up; pnpm-up; pip-up; cargo-up; nvim-cfg-up; nvm-up; nvm-cl; npm-cv; pnpm-cl; pip-cl; code-cl; clr; zsh-rr;"
+alias all-up="mas-up; brew-up; brew-cl; brew-dc; zsh-up; npm-up; pnpm-up; pip-up; nvim-cfg-up; nvm-up; nvm-cl; npm-cv; pnpm-cl; pip-cl; code-cl; clr; zsh-rr;"
 
 # MacOS
 alias mac-up="sudo softwareupdate -i -a --restart"
@@ -65,7 +64,7 @@ alias mas-up="mas upgrade"
 
 # brew
 alias brew-up="brew update; brew upgrade; brew upgrade --cask"
-alias brew-cl="brew cleanup -s"
+alias brew-cl="brew cleanup -s; brew autoremove"
 alias brew-dc="brew doctor; brew missing"
 
 # zsh
@@ -87,9 +86,6 @@ alias npm-cv="npm cache verify"
 # pnpm
 alias pnpm-up="pnpm add -g pnpm && pnpm update -g"
 alias pnpm-cl="pnpm store prune"
-
-# cargo
-alias cargo-up="cargo install $(cargo install --list | egrep '^[a-z0-9_-]+ v[0-9.]+:$' | cut -f1 -d' ')"
 
 # nvim
 alias nvim-cfg-up="git -C ~/.config/nvim pull --rebase --autostash"
