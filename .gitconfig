@@ -3,3 +3,5 @@
 	name = Petr Rajtslegr
 [init]
 	defaultbranch = main
+[core]
+	excludesfile = /Users/petr/.gitignore_global

@@ -21,6 +21,9 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 ZSH_DISABLE_COMPFIX=true
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
+# Path to hombrew binary
+export PATH="/opt/homebrew/bin:$PATH"
+
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
@@ -33,8 +36,6 @@ plugins=(
   git
   git-auto-fetch
   history
-  ng
-  npm
   nvm
   sudo
   tmux
@@ -45,10 +46,6 @@ source $ZSH/oh-my-zsh.sh
 source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
-
-export PATH="/opt/homebrew/opt/php@7.4/bin:$PATH"
-export PATH="/opt/homebrew/opt/php@7.4/sbin:$PATH"
-export PATH="$HOME/.symfony/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
@@ -88,7 +85,7 @@ alias pnpm-up="pnpm add -g pnpm && pnpm update -g"
 alias pnpm-cl="pnpm store prune"
 
 # nvim
-alias nvim-cfg-up="git -C ~/.config/nvim pull --rebase --autostash"
+alias nvim-cfg-up="git -C ~/.local/share/lunarvim/lvim pull --rebase --autostash"
 
 # pip
 alias pip-up="python3 -m pip install --upgrade pip; pip3 list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install -U"
@@ -101,7 +98,9 @@ alias cd..="cd .."
 alias df='/opt/homebrew/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
 alias dev="cd ~/dev"
-alias work="cd ~/dev/work"
+alias work="cd ~/dev/economia"
+
+alias vpn="sudo openfortivpn"
 
 # Scripts
 alias code-cl="sh ~/dev/scripts/vscode-unused-workspace-storage-cleanup.sh"
@@ -110,22 +109,15 @@ alias slc="cd ~; python3 ~/dev/scripts/calc.py"
 # Funny time! (cmatrix, hollywood, sl, aafire, toilet)
 alias weather="curl http://wttr.in"
 alias tron="ssh sshtron.zachlatta.com"
-alias map="telnet mapscii.me"
-alias fish="asciiquarium"
 alias fcow="fortune | cowsay | lolcat"
 alias ftux="fortune | cowsay -f tux | lolcat"
 alias dragon="git log -1 | cowsay -f dragon-and-cow | lolcat"
 alias clock="watch -t -n1 'date +%A%n%x%n%X | figlet -t -c'"
-alias starwars="telnet towel.blinkenlights.nl"
 
 # git
 alias uncommit="git reset HEAD~1"
 
 # Dev-env aliases
-alias mklnsf="ln -s -f ~/dev/work/php/* ~/dev/php"
-
-alias start-lamp="brew services start httpd; brew services start php@7.4; brew services start redis; brew services start mysql"
-alias stop-lamp="brew services stop httpd; brew services stop php@7.4; brew services stop redis; brew services stop mysql"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
@@ -137,3 +129,15 @@ complete -o nospace -C /home/petr/go/bin/bit bit
 
 # Initialize fzf-tab/tmux popup
 zstyle ':fzf-tab:*' fzf-command ftb-tmux-popup
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+# set descriptions format to enable group support
+zstyle ':completion:*:descriptions' format '[%d]'
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# preview directory's content with exa when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+# switch group using `,` and `.`
+zstyle ':fzf-tab:*' switch-group ',' '.'
+# set popup-pad values
+zstyle ':fzf-tab:complete:cd:*' popup-pad 50 0
