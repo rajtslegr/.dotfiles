@@ -34,6 +34,7 @@ plugins=(
   docker
   docker-compose
   git
+  git-extras
   git-auto-fetch
   history
   nvm
@@ -141,3 +142,10 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
 zstyle ':fzf-tab:*' switch-group ',' '.'
 # set popup-pad values
 zstyle ':fzf-tab:complete:cd:*' popup-pad 50 0
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/petr/dev/economia/aktu-volby/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/petr/dev/economia/aktu-volby/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/petr/dev/economia/aktu-volby/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/petr/dev/economia/aktu-volby/node_modules/tabtab/.completions/sls.zsh
