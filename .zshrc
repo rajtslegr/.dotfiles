@@ -12,7 +12,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH"
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/petr/.oh-my-zsh"
@@ -54,7 +54,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # --------------------------- Custom aliases ----------------------------------
 # UPGRADE ALL!
-alias all-up="mas-up; brew-up; brew-cl; brew-dc; zsh-up; npm-up; pnpm-up; pip-up; nvim-cfg-up; nvm-up; nvm-cl; npm-cv; pnpm-cl; pip-cl; code-cl; clr; zsh-rr;"
+alias all-up="mas-up; brew-up; brew-cl; brew-dc; zsh-up; nvm-up; npm-up; pip-up; lvim-up; nvm-cl; npm-cv; pip-cl; code-cl; clr; zsh-rr;"
 
 # MacOS
 alias mac-up="sudo softwareupdate -i -a --restart"
@@ -75,22 +75,18 @@ alias p10k-up="git -C ~/.oh-my-zsh/custom/themes/powerlevel10k pull --rebase"
 alias fzf-tab-up="git -C ~/.oh-my-zsh/custom/plugins/fzf-tab pull --rebase"
 
 # nvm
-alias nvm-up="nvm install node --reinstall-packages-from=node"
+alias nvm-up="nvm install --lts"
 alias nvm-cl="nvm cache clear"
 alias npm-ls="npm list -g --depth=0"
 alias npm-up="npm update -g"
 alias npm-cv="npm cache verify"
 
-# pnpm
-alias pnpm-up="pnpm add -g pnpm && pnpm update -g"
-alias pnpm-cl="pnpm store prune"
-
-# nvim
-alias nvim-cfg-up="git -C ~/.local/share/lunarvim/lvim pull --rebase --autostash"
-
 # pip
 alias pip-up="python3 -m pip install --upgrade pip; pip3 list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install -U"
 alias pip-cl="pip3 cache purge"
+
+# lvim
+alias lvim-up="lvim +LvimUpdate +q"
 
 # Basic bash aliases
 alias clr="clear"
@@ -117,8 +113,10 @@ alias clock="watch -t -n1 'date +%A%n%x%n%X | figlet -t -c'"
 
 # git
 alias uncommit="git reset HEAD~1"
-
-# Dev-env aliases
+alias gddb="git remote prune origin --dry-run \
+  | grep origin/ \
+  | sed 's,.*origin/,,g' \
+  | xargs git branch -D"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
