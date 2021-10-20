@@ -54,7 +54,7 @@ export NVM_DIR="$HOME/.nvm"
 
 # --------------------------- Custom aliases ----------------------------------
 # UPGRADE ALL!
-alias all-up="mas-up; brew-up; brew-cl; brew-dc; zsh-up; nvm-up; npm-up; pip-up; lvim-up; nvm-cl; npm-cv; pip-cl; code-cl; clr; zsh-rr;"
+alias all-up="mas-up; brew-up; brew-cl; brew-dc; zsh-up; nvm-up; npm-up; pip-up; nvm-cl; npm-cv; pip-cl; code-cl; clr; zsh-rr;"
 
 # MacOS
 alias mac-up="sudo softwareupdate -i -a --restart"
