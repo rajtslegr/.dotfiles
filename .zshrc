@@ -75,7 +75,7 @@ alias p10k-up="git -C ~/.oh-my-zsh/custom/themes/powerlevel10k pull --rebase"
 alias fzf-tab-up="git -C ~/.oh-my-zsh/custom/plugins/fzf-tab pull --rebase"
 
 # nvm
-alias nvm-up="nvm install --lts"
+alias nvm-up="nvm install --lts --reinstall-packages-from=node"
 alias nvm-cl="nvm cache clear"
 alias npm-ls="npm list -g --depth=0"
 alias npm-up="npm update -g"
