@@ -1,3 +1,4 @@
+
 # Start tmux on initialization.
 if [[ -z "$TMUX" && "$TERM_PROGRAM" != "vscode" ]]
 then
@@ -54,14 +55,14 @@ export NVM_DIR="$HOME/.nvm"
 
 # --------------------------- Custom aliases ----------------------------------
 # UPGRADE ALL!
-alias all-up="mas-up; brew-up; brew-cl; brew-dc; zsh-up; nvm-up; npm-up; pip-up; nvm-cl; npm-cv; pip-cl; code-cl; clr; zsh-rr;"
+alias all-up="mas-up; brew-up; brew-cl; brew-dc; zsh-up; ;lvim-up; nvm-up; npm-up; pip-up; nvm-cl; npm-cv; pip-cl; code-cl; clr; zsh-rr;"
 
 # MacOS
 alias mac-up="sudo softwareupdate -i -a --restart"
 alias mas-up="mas upgrade"
 
 # brew
-alias brew-up="brew update; brew upgrade; brew upgrade --cask"
+alias brew-up="brew update; brew upgrade; brew upgrade --cask; brew cu -a -y"
 alias brew-cl="brew cleanup -s; brew autoremove"
 alias brew-dc="brew doctor; brew missing"
 
@@ -75,7 +76,7 @@ alias p10k-up="git -C ~/.oh-my-zsh/custom/themes/powerlevel10k pull --rebase"
 alias fzf-tab-up="git -C ~/.oh-my-zsh/custom/plugins/fzf-tab pull --rebase"
 
 # nvm
-alias nvm-up="nvm install --lts --reinstall-packages-from=node"
+alias nvm-up="nvm install 'lts/*' --reinstall-packages-from=current"
 alias nvm-cl="nvm cache clear"
 alias npm-ls="npm list -g --depth=0"
 alias npm-up="npm update -g"
@@ -113,10 +114,7 @@ alias clock="watch -t -n1 'date +%A%n%x%n%X | figlet -t -c'"
 
 # git
 alias uncommit="git reset HEAD~1"
-alias gddb="git remote prune origin --dry-run \
-  | grep origin/ \
-  | sed 's,.*origin/,,g' \
-  | xargs git branch -D"
+alias gddb="git branch --v | grep '\[gone\]' | awk '{print $1}' | xargs git branch -D"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
