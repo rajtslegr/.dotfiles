@@ -2,7 +2,7 @@
 # Start tmux on initialization.
 if [[ -z "$TMUX" && "$TERM_PROGRAM" != "vscode" ]]
 then
-    tmux attach -t TMUX || tmux new -s TMUX
+  tmux attach -t TMUX || tmux new -s TMUX
 fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -19,7 +19,7 @@ export PATH="$HOME/.local/bin:$PATH"
 export ZSH="/Users/petr/.oh-my-zsh"
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
-ZSH_DISABLE_COMPFIX=true
+ZSH_DISABLE_COMPFIX="true"
 DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Path to hombrew binary
@@ -138,10 +138,3 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
 zstyle ':fzf-tab:*' switch-group ',' '.'
 # set popup-pad values
 zstyle ':fzf-tab:complete:cd:*' popup-pad 50 0
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /Users/petr/dev/economia/aktu-volby/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/petr/dev/economia/aktu-volby/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /Users/petr/dev/economia/aktu-volby/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/petr/dev/economia/aktu-volby/node_modules/tabtab/.completions/sls.zsh
