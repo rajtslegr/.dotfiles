@@ -53,9 +53,14 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
+# pnpm
+export PNPM_HOME="/Users/petr/Library/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+
+
 # --------------------------- Custom aliases ----------------------------------
 # UPGRADE ALL!
-alias all-up="mas-up; brew-up; brew-cl; brew-dc; zsh-up; ;lvim-up; nvm-up; npm-up; pip-up; nvm-cl; npm-cv; pip-cl; code-cl; clr; zsh-rr;"
+alias all-up="mas-up; brew-up; brew-cl; brew-dc; zsh-up; ;lvim-up; nvm-up; npm-up; pnpm-up; pip-up; nvm-cl; npm-cv; pnpm-cl; pip-cl; code-cl; clr; zsh-rr;"
 
 # MacOS
 alias mac-up="sudo softwareupdate -i -a --restart"
@@ -81,6 +86,10 @@ alias nvm-cl="nvm cache clear"
 alias npm-ls="npm list -g --depth=0"
 alias npm-up="npm update -g"
 alias npm-cv="npm cache verify"
+
+# pnpm
+alias pnpm-up="pnpm add -g pnpm && pnpm update -g"
+alias pnpm-cl="pnpm store prune"
 
 # pip
 alias pip-up="python3 -m pip install --upgrade pip; pip3 list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install -U"
