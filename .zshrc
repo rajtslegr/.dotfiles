@@ -2,7 +2,7 @@
 # Start tmux on initialization.
 if [[ -z "$TMUX" && "$TERM_PROGRAM" != "vscode" ]]
 then
-  tmux attach -t TMUX || tmux new -s TMUX
+  tmux -u attach -t TMUX || tmux -u new -s TMUX
 fi
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -37,6 +37,7 @@ plugins=(
   git
   git-extras
   git-auto-fetch
+  gh
   history
   nvm
   sudo
@@ -83,6 +84,8 @@ alias fzf-tab-up="git -C ~/.oh-my-zsh/custom/plugins/fzf-tab pull --rebase"
 # nvm
 alias nvm-up="nvm install 'lts/*' --reinstall-packages-from=current"
 alias nvm-cl="nvm cache clear"
+
+# npm
 alias npm-ls="npm list -g --depth=0"
 alias npm-up="npm update -g"
 alias npm-cv="npm cache verify"
@@ -92,7 +95,7 @@ alias pnpm-up="pnpm add -g pnpm && pnpm update -g"
 alias pnpm-cl="pnpm store prune"
 
 # pip
-alias pip-up="python3 -m pip install --upgrade pip; pip3 list --outdated --format=freeze | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip3 install -U"
+alias pip-up="python3 -m pip install --upgrade pip; pip list --outdated --format=json | jq -r '.[] | .name+\"=\"+.latest_version'"
 alias pip-cl="pip3 cache purge"
 
 # lvim
