@@ -126,7 +126,6 @@ alias clock="watch -t -n1 'date +%A%n%x%n%X | figlet -t -c'"
 
 # git
 alias uncommit="git reset HEAD~1"
-alias gddb="git branch --v | grep '\[gone\]' | awk '{print $1}' | xargs git branch -D"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
