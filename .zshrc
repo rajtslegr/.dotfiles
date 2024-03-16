@@ -1,4 +1,3 @@
-
 # Start tmux on initialization.
 if [[ -z "$TMUX" && "$TERM_PROGRAM" != "vscode" ]]
 then
@@ -61,7 +60,7 @@ export PATH="$PNPM_HOME:$PATH"
 
 # --------------------------- Custom aliases ----------------------------------
 # UPGRADE ALL!
-alias all-up="mas-up; brew-up; brew-cl; brew-dc; zsh-up; ;lvim-up; nvm-up; npm-up; pnpm-up; pip-up; nvm-cl; npm-cv; pnpm-cl; pip-cl; code-cl; clr; zsh-rr;"
+alias all-up="mas-up; brew-up; brew-cl; brew-dc; zsh-up; ;lvim-up; nvm-up; npm-up; pnpm-up; pip-up; nvm-cl; npm-cv; pnpm-cl; gh-up; pip-cl; code-cl; clr; zsh-rr;"
 
 # MacOS
 alias mac-up="sudo softwareupdate -i -a --restart"
@@ -94,6 +93,9 @@ alias npm-cv="npm cache verify"
 alias pnpm-up="pnpm add -g pnpm && pnpm update -g"
 alias pnpm-cl="pnpm store prune"
 
+# GitHub CLI
+alias gh-up="gh extension upgrade --all"
+
 # pip
 alias pip-up="python3 -m pip install --upgrade pip; pip list --outdated --format=json | jq -r '.[] | .name+\"=\"+.latest_version'"
 alias pip-cl="pip3 cache purge"
@@ -105,6 +107,8 @@ alias lvim-up="lvim +LvimUpdate +q"
 alias clr="clear"
 alias cd..="cd .."
 
+alias c="code"
+
 alias df='/opt/homebrew/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 
 alias dev="cd ~/dev"
@@ -115,14 +119,6 @@ alias vpn="sudo openfortivpn"
 # Scripts
 alias code-cl="sh ~/dev/scripts/vscode-unused-workspace-storage-cleanup.sh"
 alias slc="cd ~; python3 ~/dev/scripts/calc.py"
-
-# Funny time! (cmatrix, hollywood, sl, aafire, toilet)
-alias weather="curl http://wttr.in"
-alias tron="ssh sshtron.zachlatta.com"
-alias fcow="fortune | cowsay | lolcat"
-alias ftux="fortune | cowsay -f tux | lolcat"
-alias dragon="git log -1 | cowsay -f dragon-and-cow | lolcat"
-alias clock="watch -t -n1 'date +%A%n%x%n%X | figlet -t -c'"
 
 # git
 alias uncommit="git reset HEAD~1"
