@@ -110,6 +110,7 @@ alias cd..="cd .."
 alias c="code"
 
 alias df='/opt/homebrew/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+alias dfcam='df commit -am "Update dotfiles"'
 
 alias dev="cd ~/dev"
 alias work="cd ~/dev/economia"
