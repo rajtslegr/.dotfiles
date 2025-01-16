@@ -1,0 +1,7 @@
+font-family = "FiraCode Nerd Font"
+font-size = 12
+window-height = 30
+window-width = 110
+theme = GitHub Dark
+shell-integration = zsh
+confirm-close-surface = false

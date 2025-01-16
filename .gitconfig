@@ -5,3 +5,4 @@
 	defaultbranch = main
 [core]
 	excludesfile = /Users/petr/.gitignore_global
+	ignorecase = false
