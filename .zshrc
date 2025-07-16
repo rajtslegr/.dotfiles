@@ -24,12 +24,13 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Path to hombrew binary
 export PATH="/opt/homebrew/bin:$PATH"
 
-# Which plugins would you like to load?
+# Which plugins would you like to load?/
 # Standard plugins can be found in $ZSH/plugins/
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  dotenv
   autojump
   docker
   docker-compose
@@ -68,18 +69,9 @@ source /opt/homebrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 
-export NVM_DIR="$HOME/.nvm"
-  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
-  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-# pnpm
-export PNPM_HOME="/Users/petr/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-
-
 # --------------------------- Custom aliases ----------------------------------
 # UPGRADE ALL!
-alias all-up="mas-up; brew-up; brew-cl; brew-dc; zsh-up; ;lvim-up; nvm-up; npm-up; pnpm-up; pip-up; nvm-cl; npm-cv; pnpm-cl; gh-up; code-cl; clr; zsh-rr;"
+alias all-up="mas-up; brew-up; brew-cl; brew-dc; zsh-up; nvm-up; npm-up; nvm-cl; npm-cv; pnpm-cl; gh-up; code-cl; clr; zsh-rr;"
 
 # MacOS
 alias mac-up="sudo softwareupdate -i -a --restart"
@@ -93,7 +85,7 @@ alias brew-dc="brew doctor; brew missing"
 # zsh
 alias zsh-cfg="code ~/.zshrc"
 alias zsh-rr="exec zsh"
-alias zsh-up="omz update --unattended; p10k-up; fzf-tab-up"
+alias zsh-up="$ZSH/tools/upgrade.sh -v silent; p10k-up; fzf-tab-up"
 alias zsh-hs="mv ~/.zsh_history ~/.zsh_history_bad && strings ~/.zsh_history_bad > ~/.zsh_history && fc -R ~/.zsh_history && rm ~/.zsh_history_bad"
 
 alias p10k-up="git -C ~/.oh-my-zsh/custom/themes/powerlevel10k pull --rebase"
@@ -109,17 +101,10 @@ alias npm-up="npm update -g"
 alias npm-cv="npm cache verify"
 
 # pnpm
-alias pnpm-up="pnpm add -g pnpm && pnpm update -g"
 alias pnpm-cl="pnpm store prune"
 
 # GitHub CLI
 alias gh-up="gh extension upgrade --all"
-
-# pip
-alias pip-up="pipx upgrade-all"
-
-# lvim
-alias lvim-up="lvim +LvimUpdate +q"
 
 # Basic bash aliases
 alias clr="clear"
@@ -130,14 +115,12 @@ alias c="code"
 alias df='/opt/homebrew/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias dfcam='df commit -am "Update dotfiles"'
 
-alias dev="cd ~/dev"
-alias work="cd ~/dev/economia"
-
-alias vpn="sudo openfortivpn"
+alias dev="cd ~/Developer"
+alias work="cd ~/Developer/prusa"
 
 # Scripts
-alias code-cl="sh ~/dev/scripts/vscode-unused-workspace-storage-cleanup.sh"
-alias slc="cd ~; python3 ~/dev/scripts/calc.py"
+alias code-cl="sh ~/Developer/scripts/vscode-unused-workspace-storage-cleanup.sh"
+alias slc="cd ~; python3 ~/Developer/scripts/calc.py"
 
 # git
 alias uncommit="git reset HEAD~1"
@@ -152,3 +135,18 @@ complete -o nospace -C /home/petr/go/bin/bit bit
 
 # Added by LM Studio CLI (lms)
 export PATH="$PATH:/Users/petr/.cache/lm-studio/bin"
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/petr/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export PNPM_HOME="/Users/petr/Library/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac

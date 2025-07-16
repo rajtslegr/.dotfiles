@@ -6,3 +6,6 @@
 [core]
 	excludesfile = /Users/petr/.gitignore_global
 	ignorecase = false
+
+[includeIf "gitdir:~/Developer/prusa/"]
+    path = ~/.gitconfig-prusa
