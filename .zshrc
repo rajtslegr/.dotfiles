@@ -56,8 +56,8 @@ zinit wait lucid for \
     Aloxaf/fzf-tab \
     hlissner/zsh-autopair \
     MichaelAquilina/zsh-you-should-use \
-    changyuheng/zsh-interactive-cd \
-    mafredri/zsh-async
+    mafredri/zsh-async \
+    agkozak/zsh-z
 
 # Load history-substring-search with key bindings
 zinit wait lucid atload'
@@ -82,10 +82,6 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
 zstyle ':fzf-tab:*' switch-group ',' '.'
 zstyle ':fzf-tab:complete:cd:*' popup-pad 50 0
-
-# Load autojump (Homebrew version)
-[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
-
 
 # ========================== CUSTOM ALIASES ==========================
 # UPGRADE ALL!
