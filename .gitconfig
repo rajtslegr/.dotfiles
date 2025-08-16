@@ -9,3 +9,5 @@
 
 [includeIf "gitdir:~/Developer/prusa/"]
     path = ~/.gitconfig-prusa
+[push]
+	default = current

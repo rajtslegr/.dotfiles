@@ -1,7 +1,7 @@
-font-family = "Fira Code"
+# font-family = "Fira Code"
 font-size = 12
 window-height = 30
 window-width = 110
-theme = GitHub Dark
+theme = NvimDark
 shell-integration = zsh
 confirm-close-surface = false
